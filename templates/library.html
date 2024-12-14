@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Basic Styling */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1d1f21, #6a0572);
+            color: #fff;
+            animation: fadeIn 2s ease-in;
+        }
+
+        /* Menu Styling */
+        #menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #2c2f33;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-out;
+        }
+
+        #logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #logo b {
+            color: #8a2be2;
+        }
+
+        #menu1 ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu1 ul a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        #menu1 ul a:hover {
+            background: #8a2be2;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        /* Book Section Styling */
+        #library {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 30px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .book {
+            background: #2c2f33;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .book:hover {
+            transform: scale(1.05);
+        }
+
+        .book img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .book h3 {
+            color: #8a2be2;
+            margin-bottom: 10px;
+        }
+
+        .book p {
+            color: #ccc;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .search-container input {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-right: 10px;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background: #8a2be2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .search-container button:hover {
+            background: #5a0080;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Chat Box Styling */
+        #chat-box {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #2c2f33;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            display: none; /* Initially hidden */
+            animation: slideIn 0.5s ease-out;
+        }
+
+        #chat-box .messages {
+            height: 200px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        #chat-box input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            background: #1d1f21;
+            color: #fff;
+        }
+
+        #chat-box button {
+            padding: 10px 20px;
+            background: #8a2be2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        #chat-box button:hover {
+            background: #5a0080;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #menu1 ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2, 0 0 15px #8a2be2, 0 0 20px #8a2be2;
+            }
+            50% {
+                box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+            }
+            100% {
+                box-shadow: 0 0 5px #8a2be2, 0 0 10px #8a2be2, 0 0 15px #8a2be2, 0 0 20px #8a2be2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <div id="logo">LIBRARY<b>ZONE</b></div>
+        <div id="menu1">
+            <ul>
+                <a href="/home"><li class="fa fa-home"> Home</li></a>
+                <a href="#"><li class="fa fa-image"> Library</li></a>
+                <a href="/admin"><li class="fa fa-user"> Admin Login</li></a>
+                <a href="/register"><li class="fa fa-registered"> Register</li></a>
+                <a href="/login"><li class="fa fa-user"> Login</li></a>
+                <a href="/ab"><li class="fa fa-image"> Add Books</li></a>
+                <a href="/up"><li class="fa fa-user"> Profile</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-container">
+        <input type="text" id="search-bar" name="query" placeholder="Search books..." required>
+        <button type="submit" id="search-button"><i class="fa fa-search"></i> Search</button>
+    </div>
+
+    <!-- Library Section -->
+    <div id="library">
+        <!-- Book entries will be dynamically inserted here -->
+    </div>
+
+    <!-- AI Chat Box -->
+    <div id="chat-box">
+        <div class="messages" id="messages">
+            <!-- Chat messages will be displayed here -->
+        </div>
+        <input type="text" id="user-query" placeholder="Ask LibBot..." />
+        <button id="send-query">Send</button>
+    </div>
+
+    <!-- AI Button at the Bottom -->
+    <button id="ai-button" style="
+        position: fixed; 
+        bottom: 20px; 
+        right: 20px; 
+        background: #8a2be2; 
+        color: white; 
+        border: none; 
+        padding: 12px 30px; 
+        border-radius: 30px; 
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+        font-size: 16px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        cursor: pointer;
+        animation: glow 1.5s infinite;
+    ">
+        <i class="fa fa-robot"></i> Chat with LibBot
+    </button>
+
+    <script>
+        // Show/Hide the chat box when the button is clicked
+        document.getElementById("ai-button").addEventListener("click", function() {
+            const chatBox = document.getElementById("chat-box");
+            chatBox.style.display = (chatBox.style.display === "block") ? "none" : "block";
+        });
+
+        // Handle sending user query to backend
+        document.getElementById("send-query").addEventListener("click", function() {
+            const userQuery = document.getElementById("user-query").value;
+            if (userQuery) {
+                const messageDiv = document.createElement("div");
+                messageDiv.classList.add("user-message");
+                messageDiv.textContent = userQuery;
+                document.getElementById("messages").appendChild(messageDiv);
+                document.getElementById("user-query").value = "";
+
+                // Send the user query to the backend
+                fetch('/libbot', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query: userQuery })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const botMessage = document.createElement("div");
+                    botMessage.classList.add("bot-message");
+                    botMessage.textContent = data.response;
+                    document.getElementById("messages").appendChild(botMessage);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Reuse previous styles here for consistency */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1d1f21, #6a0572);
+            color: #fff;
+            animation: fadeIn 2s ease-in;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensures footer stays at the bottom */
+        }
+
+        #menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #2c2f33;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            animation: slideIn 1s ease-out;
+        }
+
+        #logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        #logo b {
+            color: #8a2be2;
+        }
+
+        #menu1 ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        #menu1 ul a {
+            text-decoration: none;
+            color: #fff;
+            padding: 5px 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        #menu1 ul a:hover {
+            background: #8a2be2;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .profile-container {
+            text-align: center;
+            margin-top: 50px;
+            animation: slideUp 1.5s ease-out;
+            flex-grow: 1; /* Ensures the profile section expands to take available space */
+        }
+
+        .profile-card {
+            background: #2c2f33;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            width: 300px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .profile-card h2 {
+            color: #8a2be2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-card h2 i {
+            margin-right: 10px;
+            font-size: 30px;
+        }
+
+        .profile-card p {
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #2c2f33;
+            color: #8a2be2;
+            margin-top: auto; /* Pushes footer to the bottom */
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0); }
+        }
+
+        @keyframes slideUp {
+            0% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            #menu {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            #menu1 ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .profile-card {
+                width: 80%;
+                margin: 20px auto;
+                padding: 20px;
+            }
+
+            .footer {
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #menu {
+                padding: 10px;
+            }
+
+            .profile-card {
+                width: 90%;
+                margin: 20px auto;
+            }
+
+            #menu1 ul {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .footer {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+        <div id="logo">LIBRARY<b>ZONE</b></div>
+        <div id="menu1">
+            <ul>
+                 <a href="/home"><li class="fa fa-home"> Home</li></a>
+                <a href="/library"><li class="fa fa-image"> Library</li></a>
+                <a href="/admin"><li class="fa fa-user"> Admin Login</li></a>
+                <a href="/register"><li class="fa fa-registered"> Register</li></a>
+                <a href="/login"><li class="fa fa-user"> Login</li></a>
+                <a href="/ab"><li class="fa fa-image"> Add Books</li></a>
+                <a href="#"><li class="fa fa-user"> Profile</li></a>
+            </ul>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <div class="profile-card">
+            <h2><i class="fa fa-user-circle"></i><span id="username">User</span>'s Profile</h2>
+            <p>Name: <span id="user-name">User</span></p>
+            <p>Email: <span id="user-email">user@example.com</span></p>
+            <p>Membership Status: <span id="user-status">Active</span></p>
+            <p>Last Login: <span id="last-login">12 Dec 2024</span></p>
+        </div>
+    </div>
+
+    <div class="footer">Developed By : Balaji </div>
+
+    <script>
+        // Simulate dynamic user data (this could come from a backend or local storage)
+        var user = {
+            name: "John Doe",  // Example user data, replace with dynamic data
+            email: "johndoe@example.com",
+            status: "Active",
+            lastLogin: "12 Dec 2024"
+        };
+
+        // Update profile information dynamically
+        document.getElementById("username").textContent = user.name.split(" ")[0];  // Show first name
+        document.getElementById("user-name").textContent = user.name;
+        document.getElementById("user-email").textContent = user.email;
+        document.getElementById("user-status").textContent = user.status;
+        document.getElementById("last-login").textContent = user.lastLogin;
+    </script>
+</body>
+</html>
